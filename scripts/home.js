@@ -7,7 +7,6 @@ var j='3';
 
 function getData() {
     
-    
     document.write('<ul style="list-style-type: none;margin: 0;padding: 0;overflow: hidden;background-color: #333;">\
     <li style="float: left;">\
       <a href="home.html" style="display: block;color: white;text-align: center;padding: 14px 16px; text-decoration: none;" >Home</a>\
@@ -16,7 +15,7 @@ function getData() {
       <a href="#" style="display: block;color: white;text-align: center;padding: 14px 16px; text-decoration: none;">About</a>\
     </li>\
     <li style="float: left;">\
-      <a href="#" style="display: block;color: white;text-align: center;padding: 14px 16px; text-decoration: none;">Contact us</a>\
+      <a href="Contact.html" style="display: block;color: white;text-align: center;padding: 14px 16px; text-decoration: none;">Contact us</a>\
     </li>\
     </ul>');
 
@@ -62,6 +61,7 @@ for(let i=0;i<res.length;i++)
         //////////////////////
         divv.style.textAlign = "center";
         divv.style.outline = "thick solid #0000FF";
+        divv.style.background = "#f3f3f3 url('img/source.gif') repeat right top";
 
         
        
