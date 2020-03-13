@@ -27,6 +27,31 @@ xhr .onload = ()=>
     
 for(let i=0;i<res.length;i++)
   {
+    /* 
+        "ProductPicUrl": "https://openui5.hana.ondemand.com/test-resources/sap/ui/documentation/sdk/images/HT-1000.jpg",
+         */
+        
+      
+    let MainCategory = res[i].MainCategory;
+    let Category = res[i].Category;
+    let SupplierName = res[i].SupplierName;
+    let Price = res[i].Price;
+    let Name = res[i].Name;
+    let WeightMeasure = res[i].WeightMeasure;
+    let WeightUnit = res[i].WeightUnit;
+    let Width = res[i].Width;
+    let Depth = res[i].Depth;   
+    let Height = res[i].Height;
+    let DimUnit = res[i].DimUnit;
+    let Description = res[i].Description;
+    let Img =res[i].ProductPicUrl;
+    let Img1 = res[i+1].ProductPicUrl;
+    let Img2 = res[i+2].ProductPicUrl;
+    let Img3 = res[i+3].ProductPicUrl;
+    let Img4 = res[i+4].ProductPicUrl;
+
+
+   
       
         let div1 = document.createElement("div");
         div1.classList.add('col-md-3','col-sm-6');
@@ -40,7 +65,8 @@ for(let i=0;i<res.length;i++)
        
         let imgg = document.createElement("img");
         imgg.setAttribute("src",res[i].ProductPicUrl);
-        imgg.classList.add("img-fluid")
+        imgg.classList.add("img-fluid");
+
 
         let div4 = document.createElement("div");
         div4.classList.add("product-hover");
@@ -75,8 +101,28 @@ for(let i=0;i<res.length;i++)
         let showdetail=document.createElement('a');
         showdetail.classList.add("view-details-link");
         showdetail.textContent ="See details";
-        showdetail.href = "single-product.html";  
-     
+        showdetail.onclick = function  () {
+        localStorage.setItem('MainCategoryProduct', MainCategory);
+        localStorage.setItem('CategoryProduct', Category);
+        localStorage.setItem('SupplierNameProduct', SupplierName);
+        localStorage.setItem('PriceProduct',Price);
+        localStorage.setItem('NameProduct',Name);
+        localStorage.setItem('WeightM',WeightMeasure);
+        localStorage.setItem('WeightU',WeightUnit);
+        localStorage.setItem('Width',Width);
+        localStorage.setItem('Depth',Depth);
+        localStorage.setItem('Height',Height);
+        localStorage.setItem('DimUnit',DimUnit);
+        localStorage.setItem('Description',Description);
+        localStorage.setItem('Img',Img);
+        localStorage.setItem('Img1',Img1);
+        localStorage.setItem('Img2',Img2);
+        localStorage.setItem('Img3',Img3);
+        localStorage.setItem('Img4',Img4);
+
+
+        window.document.location = 'single-product.html'; };
+       
   
        
         data.appendChild(div1);
