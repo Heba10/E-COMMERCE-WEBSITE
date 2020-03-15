@@ -4,7 +4,10 @@
             Contact us
         </title>
         <link rel="stylesheet" href="styles/styles.css">
+        <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
         <script src="scripts/Contact.js"></script>
+        <!-- <script src="jquery.js"></script> -->
 
     </head>
     <body>
@@ -24,7 +27,7 @@
             <div id="error_message">
           
             </div>
-            <form action="" id="myform" onsubmit="return validate();">
+            <form action=""  id="myform" onsubmit="return validate();">
               <div class="input_field">
                 <input type="text" placeholder="Name" id="name">
               </div>
@@ -38,9 +41,30 @@
                 <textarea placeholder="Message" id="message"></textarea>
               </div>
               <div class="btn">
-                <input type="submit">
+                <input type="submit" onclick="sendIt();">
               </div>
             </form>
           </div>
+
+
+          <script type="text/javascript">
+            function sendIt() {
+    // var endpoint = 'https://afternoon-falls-30227.herokuapp.com/api/v1/contact_us'; 
+              
+         $.ajax({ 
+        type: "POST",
+        url: 'https://afternoon-falls-30227.herokuapp.com/api/v1/contact_us',
+        data: $('#myForm').serializeArray(),
+        // success: function () {
+        //     alert('success post');
+        // },
+        // error: function () {
+        //     alert('error post');
+        // }
+    });
+}
+          </script>
+
+
     </body>
 </html>
