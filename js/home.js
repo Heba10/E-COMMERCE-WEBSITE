@@ -82,7 +82,28 @@ for(let i=0;i<res.length;i++)
         let h=document.createElement('h2');
         let name=document.createElement('a');
         name.textContent =(res[i].Name);
-        name.href = "single-product.html";  
+        name.onclick = function  () {
+          localStorage.setItem('MainCategoryProduct', MainCategory);
+          localStorage.setItem('CategoryProduct', Category);
+          localStorage.setItem('SupplierNameProduct', SupplierName);
+          localStorage.setItem('PriceProduct',Price);
+          localStorage.setItem('NameProduct',Name);
+          localStorage.setItem('WeightM',WeightMeasure);
+          localStorage.setItem('WeightU',WeightUnit);
+          localStorage.setItem('Width',Width);
+          localStorage.setItem('Depth',Depth);
+          localStorage.setItem('Height',Height);
+          localStorage.setItem('DimUnit',DimUnit);
+          localStorage.setItem('Description',Description);
+          localStorage.setItem('Img',Img);
+          localStorage.setItem('Img1',Img1);
+          localStorage.setItem('Img2',Img2);
+          localStorage.setItem('Img3',Img3);
+          localStorage.setItem('Img4',Img4);
+  
+  
+          window.document.location = 'single-product.html'; };
+         
         h.appendChild(name);
         
 
