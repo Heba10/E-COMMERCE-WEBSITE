@@ -1,3 +1,71 @@
+var cart_price=document.getElementById('elements_total');
+var cart_amount=document.getElementById('elements_no');
+if (localStorage.getItem('cart_price') === null&&localStorage.getItem('cart_amount') === null) {
+  cart_price.innerText=0;
+  cart_amount.innerText=0;
+}
+else{
+cart_price.innerText=window.localStorage.getItem('cart_price');
+cart_amount.innerText=window.localStorage.getItem('cart_amount');
+}
+
+        var db;
+        //open database
+        var request = window.indexedDB.open("Cart_Database",3);
+        request.onerror = function() {
+               console.log("doesnt create")
+         };
+        //success
+        request.onsuccess = function(event) {
+                db = event.target.result;
+                console.log(" created")
+         };
+ 
+        request.onupgradeneeded = function(event) { 
+        db = event.target.result;
+        console.log(db);
+        
+        {var s_cart = db.createObjectStore('shop_cart', { keyPath: "product_id" });
+        var nameIndex = s_cart.createIndex("by_id", "product_id", {unique: true});
+        }
+      }; 
+
+
+    
+
+function add_to_Cart(p_id,Name,Img,price)
+{    
+        var product_id=p_id;
+        var pName=Name;
+        var pImg=Img;
+        var pPrice=price;
+         
+
+        var new_product={
+                product_id:product_id,
+                pName:pName,
+                pImg:pImg,
+                pPrice:pPrice,
+                pQuantity:1
+        }
+
+        var transaction = db.transaction(["shop_cart"], "readwrite");
+        var order = transaction.objectStore("shop_cart");
+
+        var request= order.add(new_product);
+        request.onerror = function(event) {
+                alert("this product is already Added")
+          };
+         //success
+         request.onsuccess = function(event) {
+                 alert("this product is Added")
+                 cart_price.innerText=(+cart_price.innerText)+(price);
+                 cart_amount.innerText=(+cart_amount.innerText)+1;
+                 window.localStorage.setItem('cart_price',cart_price.innerText );
+                 window.localStorage.setItem('cart_amount',cart_amount.innerText );
+          };
+}
+//=============================================================================================================
 var p = '1';
 var j='12';
 
@@ -31,7 +99,7 @@ for(let i=0;i<res.length;i++)
         "ProductPicUrl": "https://openui5.hana.ondemand.com/test-resources/sap/ui/documentation/sdk/images/HT-1000.jpg",
          */
         
-      
+    let product_id=res[i].ProductId;
     let MainCategory = res[i].MainCategory;
     let Category = res[i].Category;
     let SupplierName = res[i].SupplierName;
@@ -110,13 +178,12 @@ for(let i=0;i<res.length;i++)
         let addtoc=document.createElement('a');
         addtoc.classList.add("add_to_cart_button");
         addtoc.textContent ="Add to cart";
-        addtoc.href = "#";  
+       // addtoc.href = "#";  
+        addtoc.onclick = function  ()
+        {add_to_Cart(product_id,Name,res[i].ProductPicUrl,Price);};
 
 
-        let haddtoc=document.createElement('a');
-        haddtoc.classList.add("add-to-cart-link");
-        haddtoc.textContent ="Add to cart";
-        haddtoc.href = "#";  
+      
 
 
         let showdetail=document.createElement('a');
@@ -154,7 +221,6 @@ for(let i=0;i<res.length;i++)
         div2.appendChild(div6);
         div3.appendChild(div4);
         div3.appendChild(imgg);
-        div4.appendChild(haddtoc);
         div4.appendChild(showdetail);
         div5.appendChild(price);
         div6.appendChild(addtoc);

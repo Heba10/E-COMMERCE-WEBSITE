@@ -1,3 +1,13 @@
+var cart_price=document.getElementById('elements_total');
+var cart_amount=document.getElementById('elements_no');
+if (localStorage.getItem('cart_price') === null&&localStorage.getItem('cart_amount') === null) {
+   cart_price.innerText=0;
+   cart_amount.innerText=0;
+ }
+ else{
+ cart_price.innerText=window.localStorage.getItem('cart_price');
+ cart_amount.innerText=window.localStorage.getItem('cart_amount');
+ }
 
       let MainCategory = document.getElementById("one");
       let Category = document.getElementById("two");
