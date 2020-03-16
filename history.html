@@ -22,12 +22,6 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="css/responsive.css">
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
   </head>
   <body>
    
@@ -44,7 +38,7 @@
                
                 <div class="col-sm-6">
                     <div class="shopping-item">
-                        <a href="cart.html">Cart - <span class="cart-amunt">$800</span> <i class="fa fa-shopping-cart"></i> <span class="product-count">5</span></a>
+                        <a href="cart.html">Cart - <span id="elements_total" class="cart-amunt">0</span> <i class="fa fa-shopping-cart"></i> <span id="elements_no" class="product-count">0</span></a>
                     </div>
                 </div>
             </div>
@@ -67,18 +61,11 @@
                        
                         <li ><a href="shop.html">Home</a></li>
                         <li ><a href="cart.html">Cart</a></li>
-                        <li><a href="#">Category</a></li>
                         <li><a href="about.html">About</a></li>
-                        <li ><a href="contact.html">Contact</a></li>
+                        <li><a href="contact.html">Contact</a></li>
                         <li class="active"><a href="history.html">History</a></li>
 
                     </ul>
-                    <div class="search-container" style="padding: 10px; position: relative; float: right;">
-                        <form action="">
-                            <input type="text" placeholder="Search products...">
-                            <button type="submit"><i class="fa fa-search"></i></button>
-                        </form>
-                    </div> 
                 </div>
                     
                 
@@ -91,7 +78,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="product-bit-title text-center">
-                        <h2>History</h2>
+                        <h2>CART</h2>
                     </div>
                 </div>
             </div>
@@ -101,10 +88,57 @@
     <div class="single-product-area">
         <div class="zigzag-bottom"></div>
         <div class="container">
+            <div class="row">    
+                <div class="col-md-12">
+                    <div class="product-content-right">
+                        <div class="woocommerce">
+                            <form method="post" action="#">
+                                <table cellspacing="0" class="shop_table cart">
+                                    <thead>
+                                        <tr>
+                                            <th class="product-price">id</th>
+                                            <th class="product-thumbnail">Image</th>
+                                            <th class="product-name">Product</th>
+                                            <th class="product-price">Price</th>
+                                            <th class="product-quantity">Quantity</th>
+                                            <th class="product-subtotal">Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="cart_table">
+                                        
+                                       
+                                    </tbody>
+                                </table>
+                            </form>
 
+                            <div class="cart-collaterals">
+
+                            <div class="cart_totals ">
+                                <h2>Cart Totals</h2>
+
+                                <table >
+                                    <tbody>
+
+                                        <tr class="order-total">
+                                            <th>Order Total</th>
+                                            <td><strong><span class="amount" id="total">0</span></strong> </td>
+                                        </tr>
+                                    </tbody>
+                                   
+                                </table>
+                                <div>
+                                    <div class="actions" colspan="6" >
+                                        <input type="submit" onclick="removeProducts()" value="Proceed to Checkout" name="proceed" class="checkout-button button alt wc-forward">
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>                        
+                    </div>                    
+                </div>
+            </div>
         </div>
     </div>
-    
 
 
 
@@ -127,19 +161,7 @@
                 </div>
                 
                
-                <div class="col-md-3 col-sm-6">
-                    <div class="footer-menu">
-                        <h2 class="footer-wid-title">Categories</h2>
-                        <ul>
-                            <li><a href="">Mobile Phone</a></li>
-                            <li><a href="">Home accesseries</a></li>
-                            <li><a href="">LED TV</a></li>
-                            <li><a href="">Computer</a></li>
-                            <li><a href="">Gadets</a></li>
-                        </ul>                        
-                    </div>
-                </div>
-                
+
             </div>
         </div>
     </div>
